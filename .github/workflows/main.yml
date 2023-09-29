@@ -20,10 +20,10 @@ jobs:
       run: make ARCH=um all
     - name: create artifacts dir
       run: mkdir artifacts
-    - name: copy kernel and modules
-      run: |
-	   cp linux artifacts/
-           make modules_install INSTALL_MOD_PATH=./artifacts ARCH=um
+    - name: copy kernel
+      run: cp linux artifacts/
+    - name: copy kernel modules
+      run: make modules_install INSTALL_MOD_PATH=./artifacts ARCH=um
     - uses: actions/upload-artifact@v3
       with:
         name: linux-build-artifacts
