@@ -5,6 +5,7 @@ on:
     branches: [ "linux-rolling-stable" ]
   pull_request:
     branches: [ "linux-rolling-stable" ]
+  workflow_dispatch:
 
 jobs:
   build:
