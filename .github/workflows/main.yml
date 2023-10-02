@@ -24,6 +24,8 @@ jobs:
       run: cp linux artifacts/
     - name: copy kernel modules
       run: make modules_install INSTALL_MOD_PATH=./artifacts ARCH=um
+    - name: remove kernel module directory simlinks
+      run: rm artifacts/lib/modules/$(make kernelrelease)/build artifacts/lib/modules/$(make kernelrelease)/source
     - uses: actions/upload-artifact@v3
       with:
         name: linux-build-artifacts
