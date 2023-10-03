@@ -1,0 +1,19 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "linux-rolling-stable" ]
+  pull_request:
+    branches: [ "linux-rolling-stable" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: debootstrap directory
+      run: mkdir debootstrap
+    - name: debootstrap
+      run: debootstrap --variant=minbase bookworm debootstrap/
