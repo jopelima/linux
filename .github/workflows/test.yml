@@ -18,6 +18,7 @@ jobs:
       with:
         run_id: 6378412508
         name: linux-build-artifacts
+        path: linux-build-artifacts
     - name: ls
       run: ls
     - name: make file
