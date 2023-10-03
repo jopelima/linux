@@ -19,6 +19,8 @@ jobs:
       run: mkfs -t ext4 -F umlfs
     - name: debootstrap directory
       run: mkdir debootstrap
+    - name: modprobe
+      run: sudo modprobe loop ; sudo lsmod | grep loop
     - name: mount filesystem
       run: mount -o loop,rw umlfs debootstrap
     - name: install debootstrap
