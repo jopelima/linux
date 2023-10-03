@@ -16,6 +16,6 @@ jobs:
     - name: debootstrap directory
       run: mkdir debootstrap
     - name: install debootstrap
-      run: apt-get install debootstrap
+      run: sudo apt-get install debootstrap
     - name: debootstrap
       run: debootstrap --variant=minbase bookworm debootstrap/
