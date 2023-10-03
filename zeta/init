@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "tcrypt: starting tcrypt test execution"
+
+sh /test-script.sh
+
+mount proc /proc -t proc
+
+echo o > /proc/sysrq-trigger
+
