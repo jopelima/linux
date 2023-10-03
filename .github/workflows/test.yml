@@ -15,13 +15,12 @@ jobs:
     steps:
     - name: make file
       run: |
+        sudo apt-get install debootstrap
         dd if=/dev/zero of=umlfs bs=1 count=0 seek=1G
         mkfs -t ext4 -F umlfs
-    - name: debootstrap directory
-      run: mkdir debootstrap
-    - name: mount filesystem
-      run: sudo mount -o loop,rw umlfs debootstrap
-    - name: install debootstrap
-      run: sudo apt-get install debootstrap
-    - name: debootstrap
-      run: sudo debootstrap --variant=minbase bookworm debootstrap/
+        mkdir debootstrap
+        sudo mount -o loop,rw umlfs debootstrap
+        sudo debootstrap --variant=minbase bookworm debootstrap/
+    - name: test
+      run: echo "test"
+    
