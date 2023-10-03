@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - name: make file
-      run: dd if=/dev/zero of=umlfs bs=1 count=0 seek=1G
-    - name: create filesystem
-      run: mkfs -t ext4 -F umlfs
+      run: |
+        dd if=/dev/zero of=umlfs bs=1 count=0 seek=1G
+        mkfs -t ext4 -F umlfs
     - name: debootstrap directory
       run: mkdir debootstrap
     - name: mount filesystem
