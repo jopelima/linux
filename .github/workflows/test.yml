@@ -13,8 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: make file
+      run: dd if=/dev/zero of=umlfs bs=1 count=0 seek=1G
+    - name: create filesystem
+      run: mkfs -t ext4 -F umlfs
     - name: debootstrap directory
       run: mkdir debootstrap
+    - name: mount filesystem
+      run: mount -o loop,rw umlfs debootstrap
     - name: install debootstrap
       run: sudo apt-get install debootstrap
     - name: debootstrap
