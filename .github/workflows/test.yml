@@ -18,4 +18,4 @@ jobs:
     - name: install debootstrap
       run: sudo apt-get install debootstrap
     - name: debootstrap
-      run: debootstrap --variant=minbase bookworm debootstrap/
+      run: sudo debootstrap --variant=minbase bookworm debootstrap/
