@@ -18,9 +18,9 @@ jobs:
       run: |
         cp config-um .config
         make olddefconfig ARCH=um
-        # make ARCH=um all
+        make ARCH=um all
         mkdir initramfs
-        # make modules_install INSTALL_MOD_PATH=./initramfs ARCH=um
+        make modules_install INSTALL_MOD_PATH=./initramfs ARCH=um
     - name: prepare initramfs
       run: |
         sudo apt-get install busybox-static
@@ -33,5 +33,6 @@ jobs:
         cd ..
     - name: run user-mode linux test harness
       run: |
-        echo "test"
-        # sudo ./linux initrd=uml-initramfs.cpio.gz
+        sudo ./linux initrd=uml-initramfs.cpio.gz
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
