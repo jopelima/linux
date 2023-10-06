@@ -24,6 +24,6 @@ jobs:
     - name: prepare initramfs
       run: |
         sudo apt-get install busybox-static
-        cp /bin/busybox initramfs/bin/busybox
+        cp --parents /bin/busybox initramfs/bin/busybox
         cp zeta/init  initramfs/init
         cp zeta/test-script.sh initramfs/test-script.sh
