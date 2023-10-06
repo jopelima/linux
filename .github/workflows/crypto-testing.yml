@@ -1,0 +1,29 @@
+name: Crypto algorithm testing pipeline
+
+on:
+  push:
+    branches: [ "crypto-test" ]
+  pull_request:
+    branches: [ "crypto-test" ]
+  workflow_dispatch:
+
+jobs:
+  crypto_testing_job:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: build kernel & modules
+      run: |
+        cp config-um .config
+        make olddefconfig ARCH=um
+        # make ARCH=um all
+        mkdir initramfs
+        # make modules_install INSTALL_MOD_PATH=./initramfs ARCH=um
+    - name: prepare initramfs
+      run: |
+        apt-get install busybox-static
+        cp /bin/busybox initramfs/bin/busybox
+        cp zeta/init  initramfs/init
+        cp zeta/test-script.sh initramfs/test-script.sh

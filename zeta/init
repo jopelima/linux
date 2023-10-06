@@ -1,10 +1,9 @@
-#!/bin/bash
+#!/bin/busybox sh
 
 echo "tcrypt: starting tcrypt test execution"
 
-sh /test-script.sh
+./test-script.sh
 
-mount proc /proc -t proc
+busybox mount proc /proc -t proc
 
-echo o > /proc/sysrq-trigger
-
+busybox poweroff -f
