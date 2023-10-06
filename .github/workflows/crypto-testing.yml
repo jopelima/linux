@@ -25,9 +25,9 @@ jobs:
       run: |
         sudo apt-get install busybox-static
         mkdir initramfs/bin
-        cp /bin/busybox initramfs/bin/busybox
-        cp zeta/init  initramfs/init
-        cp zeta/test-script.sh initramfs/test-script.sh
+        cp -p /bin/busybox initramfs/bin/busybox
+        cp -p zeta/init  initramfs/init
+        cp -p zeta/test-script.sh initramfs/test-script.sh
         cd initramfs
         find . -print0 | cpio --null --create --verbose --format=newc | gzip --best > ../uml-initramfs.cpio.gz
         cd ..
