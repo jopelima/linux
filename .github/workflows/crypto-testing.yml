@@ -33,7 +33,7 @@ jobs:
         cd ..
     - name: run user-mode linux test harness
       run: |
-        sudo ./linux initrd=uml-initramfs.cpio.gz | tee tcrypt.out
+        sudo ./linux initrd=uml-initramfs.cpio.gz > tcrypt.out 2>&1
       shell: bash
     - name: Setup upterm session
       uses: lhotari/action-upterm@v1
