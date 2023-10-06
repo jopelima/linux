@@ -28,3 +28,10 @@ jobs:
         cp /bin/busybox initramfs/bin/busybox
         cp zeta/init  initramfs/init
         cp zeta/test-script.sh initramfs/test-script.sh
+        cd initramfs
+        find . -print0 | cpio --null --create --verbose --format=newc | gzip --best > ../uml-initramfs.cpio.gz
+        cd ..
+    - name: run user-mode linux test harness
+      run: |
+        echo "test"
+        # sudo ./linux initrd=uml-initramfs.cpio.gz
