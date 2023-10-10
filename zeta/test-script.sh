@@ -1,3 +1,3 @@
 #!/bin/busybox sh
 
-modprobe tcrypt mode=300 alg=sha256-generic sec=1 
+modprobe tcrypt mode=400 alg=sha256-generic sec=2
